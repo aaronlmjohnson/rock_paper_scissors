@@ -45,16 +45,20 @@
             let playScore = 0;
             let compScore = 0;
             while(playScore < 5 && compScore < 5){
-                let round = playRPS(prompt(`Enter Rock, Paper, or Scissors \nScore You: ${playScore} Computer: ${compScore} `), computerPlay());
+                let playerChoice = prompt(`Enter Rock, Paper, or Scissors \nScore You: ${playScore} Computer: ${compScore} `).toLowerCase();
 
-                if(round.slice(0, 5) === "You W")
-                    playScore++;
-                else if(round.slice(0,5) === "You L")
-                    compScore++;
+                if(playerChoice === "rock" || playerChoice === "scissors" || playerChoice === "paper"){
+                    var round = playRPS(playerChoice, computerPlay());
+
+                    if(round.slice(0, 5) === "You W")
+                        playScore++;
+                    else if(round.slice(0,5) === "You L")
+                        compScore++;
+
+                }
             }
             return playScore > 4 ? `You Win! The score was you:${playScore} to computer:${compScore}.` : `You Lose! The score was computer:${compScore} to you:${playScore}.`
-        }
-        
+        } 
         console.log(game());
     </script>
 </head>
